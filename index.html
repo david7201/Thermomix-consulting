@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="pageTitle">Elena Cirlan - Your Thermomix Advisor</title>
+    <style>
+        /* Basic Reset & Body Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #eee;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .language-switcher button {
+            background-color: #00a08e;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-switcher button:hover {
+            background-color: #007062;
+        }
+
+        .language-switcher button.active {
+            background-color: #007062;
+            cursor: default;
+        }
+
+
+        /* Header & Logo */
+        header {
+            background-color: #ffffff;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 5px solid #00a08e; /* Thermomix green accent */
+        }
+
+        #logo {
+            max-width: 500px; /* Adjust logo size */
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+        }
+
+        h1 {
+            color: #00a08e; /* Thermomix green */
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        h2, h3 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            display: inline-block; /* To make the border only as wide as the text */
+        }
+
+        /* Sections */
+        section {
+            background-color: #ffffff;
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        /* Image Gallery - will be Thermomix in action */
+        .image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .image-gallery img {
+            width: calc(33.333% - 14px); /* Approx 3 images per row with gap */
+            max-width: 100%;
+            height: 200px; /* Fixed height for consistent look */
+            object-fit: cover; /* Crop to fit, maintain aspect ratio */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            min-width: 280px; /* Ensure images don't get too small on wider mobiles */
+        }
+
+        .image-gallery img:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Contact Info */
+        #contact-info p {
+            margin: 12px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        #contact-info a {
+            color: #007bff; /* Standard link blue, or a complementary color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        #contact-info a:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+
+        .social-links a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.2em;
+            color: #00a08e; /* Match Thermomix green */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #007062;
+        }
+
+        /* Call to Action Buttons (Optional but highly recommended) */
+        .cta-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            padding: 12px 25px;
+            background-color: #00a08e;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            background-color: #007062;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #333;
+            color: #eee;
+            font-size: 0.9em;
+            margin-top: 30px;
+            border-top: 1px solid #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .image-gallery img {
+                width: calc(50% - 15px); /* 2 images per row on tablets */
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            .image-gallery img {
+                width: 90%; /* 1 image per row on mobile phones */
+            }
+            section {
+                padding: 20px;
+            }
+            .cta-button {
+                font-size: 1em;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button id="lang-en" class="active">English</button>
+        <button id="lang-ro">Română</button>
+    </div>
+
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="Thermomix Logo" id="logo">
+            <h1 data-key="name">Elena Cirlan</h1>
+            <p data-key="tagline">Your Dedicated Thermomix Advisor in Dublin</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="about-us">
+            <h2 data-key="aboutTitle">About Me & Thermomix</h2>
+            <p data-key="aboutParagraph1">Hello! I'm Elena Cirlan, your local Thermomix Advisor, passionate about transforming kitchens and lives through smart cooking. My journey with Thermomix began with a desire to simplify meal prep, eat healthier, and unleash my creativity in the kitchen – and it truly changed everything!</p>
+            <p data-key="aboutParagraph2">I believe everyone deserves to experience the joy and ease of home-cooked meals without the fuss. Whether you're a busy parent, a health-conscious individual, or someone who loves to explore new cuisines, Thermomix is designed to be your ultimate kitchen companion. I'm here to show you how!</p>
+        </section>
+
+        <section id="why-thermomix">
+            <h2 data-key="whyThermomixTitle">Why You'll Love Your Thermomix</h2>
+            <p data-key="whyThermomixIntro">The Thermomix isn't just an appliance; it's a culinary revolution that replaces over 20 kitchen gadgets! Imagine:</p>
+            <ul>
+                <li><strong data-key="benefit1Title">Effortless Cooking:</strong> <span data-key="benefit1Desc">With Guided Cooking, follow step-by-step recipes on the screen for guaranteed delicious results, every time.</span></li>
+                <li><strong data-key="benefit2Title">Saving Time & Money:</strong> <span data-key="benefit2Desc">Chop, blend, steam, knead, sauté, and cook all in one bowl, cutting down prep time and reducing food waste.</span></li>
+                <li><strong data-key="benefit3Title">Healthy & Homemade:</strong> <span data-key="benefit3Desc">Easily prepare fresh, nutritious meals from scratch, controlling every ingredient for you and your family.</span></li>
+                <li><strong data-key="benefit4Title">Unlimited Inspiration:</strong> <span data-key="benefit4Desc">Access Cookidoo®, Thermomix's expansive recipe platform with thousands of international dishes, constantly updated.</span></li>
+                <li><strong data-key="benefit5Title">Declutter Your Kitchen:</strong> <span data-key="benefit5Desc">Replace your blender, food processor, mixer, scales, slow cooker, and more with one sleek device.</span></li>
+            </ul>
+            <a href="#contact-info" class="cta-button" data-key="ctaDemo">Ready to See it in Action? Book a Demo!</a>
+        </section>
+
+        <section id="thermomix-in-action">
+            <h2 data-key="galleryTitle">Thermomix Moments</h2>
+            <p data-key="galleryIntro">See some of the amazing possibilities with Thermomix!</p>
+            <div class="image-gallery">
+                <img src="img1.jpeg" data-alt-key="img1Alt" alt="Delicious meal cooked in Thermomix">
+                <img src="img2.jpg" data-alt-key="img2Alt" alt="Thermomix in use, blending or cooking">
+                <img src="img3.jpg" data-alt-key="img3Alt" alt="Fresh ingredients ready for Thermomix">
+            </div>
+        </section>
+
+        <section id="contact-info">
+            <h2 data-key="contactTitle">Let's Connect!</h2>
+            <p data-key="contactIntro">I'm excited to help you discover how Thermomix can transform your kitchen. Whether you have questions, want to see a live demonstration, or are ready to welcome a Thermomix into your home, reach out to me today!</p>
+            <p data-key="contactName"><strong>Elena Cirlan</strong></p>
+            <p data-key="contactPhone">Phone: <a href="tel:+353861073153">+353 861073153</a></p>
+            <p data-key="contactEmail">Email: <a href="mailto:elenacirlan110@gmail.com">elenacirlan110@gmail.com</a></p>
+            <!-- <p data-key="followUs">Follow me on social media for recipes, tips, and more inspiration:</p> -->
+            <!-- <div class="social-links">
+                <a href="https://www.facebook.com/yourthermomixpage" target="_blank" aria-label="Facebook">Facebook</a> |
+                <a href="https://www.instagram.com/yourthermomixadvisor" target="_blank" aria-label="Instagram">Instagram</a>
+            </div> -->
+            <a href="mailto:elenacirlan110@gmail.com" class="cta-button" data-key="ctaEmail">Email Me Today!</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p data-key="copyright">&copy; 2025 Elena Cirlan - Your Thermomix Advisor. All rights reserved.</p>
+            <p data-key="location">Proudly serving Dublin, Ireland.</p>
+        </div>
+    </footer>
+
+    <script>
+        const texts = {
+            en: {
+                pageTitle: "Elena Cirlan - Your Thermomix Advisor",
+                name: "Elena Cirlan",
+                tagline: "Your Dedicated Thermomix Advisor in Dublin",
+                aboutTitle: "About Me & Thermomix",
+                aboutParagraph1: "Hello! I'm Elena Cirlan, your local Thermomix Advisor, passionate about transforming kitchens and lives through smart cooking. My journey with Thermomix began with a desire to simplify meal prep, eat healthier, and unleash my creativity in the kitchen – and it truly changed everything!",
+                aboutParagraph2: "I believe everyone deserves to experience the joy and ease of home-cooked meals without the fuss. Whether you're a busy parent, a health-conscious individual, or someone who loves to explore new cuisines, Thermomix is designed to be your ultimate kitchen companion. I'm here to show you how!",
+                whyThermomixTitle: "Why You'll Love Your Thermomix",
+                whyThermomixIntro: "The Thermomix isn't just an appliance; it's a culinary revolution that replaces over 20 kitchen gadgets! Imagine:",
+                benefit1Title: "Effortless Cooking:",
+                benefit1Desc: "With Guided Cooking, follow step-by-step recipes on the screen for guaranteed delicious results, every time.",
+                benefit2Title: "Saving Time & Money:",
+                benefit2Desc: "Chop, blend, steam, knead, sauté, and cook all in one bowl, cutting down prep time and reducing food waste.",
+                benefit3Title: "Healthy & Homemade:",
+                benefit3Desc: "Easily prepare fresh, nutritious meals from scratch, controlling every ingredient for you and your family.",
+                benefit4Title: "Unlimited Inspiration:",
+                benefit4Desc: "Access Cookidoo®, Thermomix's expansive recipe platform with thousands of international dishes, constantly updated.",
+                benefit5Title: "Declutter Your Kitchen:",
+                benefit5Desc: "Replace your blender, food processor, mixer, scales, slow cooker, and more with one sleek device.",
+                ctaDemo: "Ready to See it in Action? Book a Demo!",
+                galleryTitle: "Thermomix Moments",
+                galleryIntro: "See some of the amazing possibilities with Thermomix!",
+                img1Alt: "Delicious meal cooked in Thermomix",
+                img2Alt: "Thermomix in use, blending or cooking",
+                img3Alt: "Fresh ingredients ready for Thermomix",
+                contactTitle: "Let's Connect!",
+                contactIntro: "I'm excited to help you discover how Thermomix can transform your kitchen. Whether you have questions, want to see a live demonstration, or are ready to welcome a Thermomix into your home, reach out to me today!",
+                contactName: "Elena Cirlan",
+                contactPhone: "Phone: +353 861073153",
+                contactEmail: "Email: elenacirlan110@gmail.com",
+                followUs: "Follow me on social media for recipes, tips, and more inspiration:",
+                ctaEmail: "Email Me Today!",
+                copyright: "&copy; 2025 Elena Cirlan - Your Thermomix Advisor. All rights reserved.",
+                location: "Proudly serving Dublin, Ireland."
+            },
+            ro: {
+                pageTitle: "Elena Cirlan - Consilierul dumneavoastră Thermomix",
+                name: "Elena Cirlan",
+                tagline: "Consilierul dumneavoastră dedicat Thermomix în Dublin",
+                aboutTitle: "Despre mine și Thermomix",
+                aboutParagraph1: "Bună! Sunt Elena Cirlan, consilierul dumneavoastră Thermomix local, pasionată de transformarea bucătăriilor și a vieților prin gătit inteligent. Călătoria mea cu Thermomix a început din dorința de a simplifica prepararea meselor, de a mânca mai sănătos și de a-mi elibera creativitatea în bucătărie – și cu adevărat a schimbat totul!",
+                aboutParagraph2: "Cred că fiecare merită să experimenteze bucuria și ușurința meselor gătite acasă, fără bătăi de cap. Fie că sunteți un părinte ocupat, o persoană preocupată de sănătate sau cineva care iubește să exploreze noi bucătării, Thermomix este conceput pentru a fi partenerul dumneavoastră culinar suprem. Sunt aici să vă arăt cum!",
+                whyThermomixTitle: "De ce veți iubi Thermomix-ul dumneavoastră",
+                whyThermomixIntro: "Thermomix nu este doar un aparat; este o revoluție culinară care înlocuiește peste 20 de ustensile de bucătărie! Imaginați-vă:",
+                benefit1Title: "Gătit fără efort:",
+                benefit1Desc: "Cu Gătitul Ghidat, urmați rețetele pas cu pas pe ecran pentru rezultate delicioase garantate, de fiecare dată.",
+                benefit2Title: "Economisiți timp și bani:",
+                benefit2Desc: "Tocati, amestecați, aburiți, frământați, sotați și gătiți totul într-un singur vas, reducând timpul de preparare și risipa de alimente.",
+                benefit3Title: "Sănătos și Făcut acasă:",
+                benefit3Desc: "Preparați cu ușurință mese proaspete și hrănitoare de la zero, controlând fiecare ingredient pentru dumneavoastră și familia dumneavoastră.",
+                benefit4Title: "Inspirație nelimitată:",
+                benefit4Desc: "Accesați Cookidoo®, platforma extinsă de rețete Thermomix cu mii de preparate internaționale, actualizată constant.",
+                benefit5Title: "Eliberați-vă bucătăria:",
+                benefit5Desc: "Înlocuiți blenderul, robotul de bucătărie, mixerul, cântarul, slow cooker-ul și multe altele cu un singur aparat elegant.",
+                ctaDemo: "Gata să-l vedeți în acțiune? Rezervați o demonstrație!",
+                galleryTitle: "Momente Thermomix",
+                galleryIntro: "Vedeți câteva dintre posibilitățile uimitoare cu Thermomix!",
+                img1Alt: "Mâncare delicioasă gătită în Thermomix",
+                img2Alt: "Thermomix în uz, amestecând sau gătind",
+                img3Alt: "Ingrediente proaspete pregătite pentru Thermomix",
+                contactTitle: "Să ne conectăm!",
+                contactIntro: "Sunt încântată să vă ajut să descoperiți cum Thermomix vă poate transforma bucătăria. Fie că aveți întrebări, doriți să vedeți o demonstrație live sau sunteți gata să întâmpinați un Thermomix în casa dumneavoastră, contactați-mă astăzi!",
+                contactName: "Elena Cirlan",
+                contactPhone: "Telefon: +353 861073153",
+                contactEmail: "Email: elenacirlan110@gmail.com",
+                followUs: "Urmăriți-mă pe rețelele sociale pentru rețete, sfaturi și mai multă inspirație:",
+                ctaEmail: "Trimiteți-mi un e-mail astăzi!",
+                copyright: "&copy; 2025 Elena Cirlan - Consilierul dumneavoastră Thermomix. Toate drepturile rezervate.",
+                location: "Servind cu mândrie Dublin, Irlanda."
+            }
+        };
+
+        const langButtons = document.querySelectorAll('.language-switcher button');
+        const htmlElement = document.querySelector('html');
+        const logoImg = document.getElementById('logo'); // Get the logo img element
+        const imageGalleryImgs = document.querySelectorAll('.image-gallery img'); // Get all gallery images
+
+        // Function to set content based on language
+        function setLanguage(lang) {
+            htmlElement.setAttribute('lang', lang);
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (texts[lang][key]) {
+                    element.textContent = texts[lang][key];
+                }
+            });
+
+            // Handle image alt attributes
+            imageGalleryImgs.forEach(img => {
+                const altKey = img.getAttribute('data-alt-key');
+                if (texts[lang][altKey]) {
+                    img.setAttribute('alt', texts[lang][altKey]);
+                }
+            });
+
+            // Update active button styling
+            langButtons.forEach(button => {
+                if (button.id === `lang-${lang}`) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+
+            // Save preference to localStorage
+            localStorage.setItem('preferredLang', lang);
+        }
+
+        // Event listeners for language buttons
+        langButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const lang = event.target.id.replace('lang-', '');
+                setLanguage(lang);
+            });
+        });
+
+        // Load preferred language on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const preferredLang = localStorage.getItem('preferredLang') || 'en'; // Default to English
+            setLanguage(preferredLang);
+
+            // Re-apply logo alt text based on current language as it doesn't have data-key
+            // If your logo itself needs language-specific text, you can add data-key to it.
+            // For now, it's a fixed alt text.
+             logoImg.setAttribute('alt', preferredLang === 'en' ? 'Thermomix Logo' : 'Logo Thermomix');
+        });
+    </script>
+</body>
+</html>
